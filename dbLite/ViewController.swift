@@ -85,8 +85,8 @@ class ViewController: UIViewController {
                                     guard let id = Int32(alert.textFields![0].text!) else {
                                         return
                                     }
-                                    let name = alert.textFields![0].text! as NSString
-                                    let phone = alert.textFields![1].text! as NSString
+                                    let name = alert.textFields![1].text! as NSString
+                                    let phone = alert.textFields![2].text! as NSString
                                     self.sql = "UPDATE people " +
                                         "SET name = ?, phone = ? " +
                                         "WHERE id = ?"
@@ -163,7 +163,7 @@ class ViewController: UIViewController {
         let createTb = sqlite3_exec(db, sql, nil, nil, nil)
         if createTb != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db))
-            print(err)
+            print("err createTb = \(err)")
         }
         select()
     }
